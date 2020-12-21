@@ -1,0 +1,21 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!-- <div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!!
+  </h1>
+  ... Starter Files ...
+</div> -->
+<div class="card">
+  <div class="card-header">
+    {{ pageTitle }}
+    <nav class="navbar navbar-expand-lg">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" [routerLink]="['/']">Home</a>
+        <a class="nav-item nav-link" [routerLink]="['/product-list']">Products</a>
+      </div>
+    </nav>
+  </div>
+  <div class="card-body">
+    <router-outlet></router-outlet>
+  </div>
+</div>

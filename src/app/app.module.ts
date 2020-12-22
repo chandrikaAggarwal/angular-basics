@@ -12,6 +12,7 @@ import { WelcomeComponent } from './home/welcome.component';
 import { PageNotFoundComponent } from './shared/page-not-found.component';
 import { ProductDetailComponent } from './product/product-detail.component';
 import { ValidRouteParamsGuard } from './shared/gaurds/valid-route-params.gaurd';
+import { AppHighlightDirective } from './shared/directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ValidRouteParamsGuard } from './shared/gaurds/valid-route-params.gaurd'
     PageNotFoundComponent,
     ProductDetailComponent,
     ConvertToSpacesPipe,
+    AppHighlightDirective
   ],
   imports: [
     BrowserModule,
@@ -30,8 +32,8 @@ import { ValidRouteParamsGuard } from './shared/gaurds/valid-route-params.gaurd'
     RouterModule.forRoot([
       { path: 'product-list', component: ProductListComponent },
       { path: 'product-detail/:id', canActivate: [ValidRouteParamsGuard], component: ProductDetailComponent },
-      { path: '', component: WelcomeComponent },
-      { path: '**', component: PageNotFoundComponent },
+      { path: '', component: WelcomeComponent, pathMatch:'full' },
+      { path: '**', component: PageNotFoundComponent, pathMatch:'full' },
     ])
   ],
   bootstrap: [AppComponent],

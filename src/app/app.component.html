@@ -8,10 +8,10 @@
 <div class="card">
   <div class="card-header">
     {{ pageTitle }}
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg" appHighlight>
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" [routerLink]="['/']">Home</a>
-        <a class="nav-item nav-link" [routerLink]="['/product-list']">Products</a>
+        <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        <a class="nav-item nav-link" routerLink="/product-list" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Products</a>
       </div>
     </nav>
   </div>

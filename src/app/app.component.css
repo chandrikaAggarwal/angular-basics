@@ -3,5 +3,6 @@
 }
 
 .active {
-  background-color: blue;
+  background-color: cornflowerblue;
+  color: white;
 }

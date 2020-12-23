@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { EMPTY } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { IProduct } from '../shared/interfaces/product';
 import { ProductService } from './product.service';
 
@@ -7,26 +9,21 @@ import { ProductService } from './product.service';
   templateUrl: './product-list.component.html',
   providers: [ProductService],
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent {
   pageTitle = 'Product List';
   private _filterBy = '';
   productList: IProduct[] = [];
   showImage = true;
+  products$ = this.productService.products$.pipe(
+    catchError((err) => {
+      return EMPTY;
+    })
+  );
 
   constructor(private productService: ProductService) {}
 
-  ngOnInit(): void {
-    this.productService.getProducts().subscribe({
-      next: (products) => (this.productList = products),
-      // error: (err) => console.log(err),
-    });
-  }
-
   get filterBy(): string {
-    this.productList = this.productService.filter(
-      this._filterBy,
-      this.productList
-    );
+    this.products$ = this.productService.filter(this._filterBy);
     return this._filterBy;
   }
 

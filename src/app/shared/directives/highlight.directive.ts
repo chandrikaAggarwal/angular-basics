@@ -6,6 +6,6 @@ import { Directive, ElementRef } from "@angular/core";
 
 export class AppHighlightDirective {
     constructor(el: ElementRef) {
-        el.nativeElement.style.backgroundColor = 'lime';
+        el.nativeElement.style.backgroundColor = 'antiquewhite';
     }
 }

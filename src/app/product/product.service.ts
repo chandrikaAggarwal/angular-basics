@@ -18,14 +18,16 @@ export class ProductService {
   constructor(private httpService: HttpClient) {}
 
   // Filter product list for requested keyword(s)
-  filter(filterBy = ''): Observable<any> {
-    if (!filterBy) return this.products$;
+  filter(filterBy = ''): Observable<Products | void> {
+    if (!filterBy) { return this.products$; }
 
     return this.products$.pipe(
       map((data) => {
-        data.filter((p) => {
-          p.productName.toLocaleLowerCase().includes(filterBy);
-        });
+        if (data.length) {
+          data.filter((p) => {
+            p.productName.toLocaleLowerCase().includes(filterBy);
+          });
+        }
       })
     );
   }

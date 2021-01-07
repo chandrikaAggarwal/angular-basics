@@ -23,6 +23,7 @@ export class ProductDetailComponent implements OnInit {
     this.productId = this.route.snapshot.params.id;
     console.log(this.productId);
 
+    
     // TODO:: Fix it
     // this.productService.getProducts().subscribe({
     //   next: (data) => {

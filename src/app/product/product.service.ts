@@ -18,7 +18,7 @@ export class ProductService {
   constructor(private httpService: HttpClient) {}
 
   // Filter product list for requested keyword(s)
-  filter(filterBy = ''): Observable<Products | void> {
+  filter(filterBy = ''): Observable<any> {
     if (!filterBy) { return this.products$; }
 
     return this.products$.pipe(
